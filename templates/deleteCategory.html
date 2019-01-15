@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+<main role="main">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <form action="?state={{login_session['state']}}" method="POST">
+      <h1>Are you sure you want to delete "{{category.name}}" with all its items?</h1>
+      <button type="submit" class="btn btn-danger btn-lg">Delete</button>
+      <a href="{{url_for('showItems', category_name=category.name)}}" class="btn btn-secondary btn-lg">Cancel</a>
+    </form>
+  </div>
+</main>
+{% endblock %}

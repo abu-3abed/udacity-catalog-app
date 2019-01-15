@@ -1,0 +1,9 @@
+<div class="col">
+  <ul>
+    <li><h1>Latest Items</h1>
+    </li>
+    {% for i in items %}
+    <li> {{ i.name }} <i>({{ i.category.name }})</i></li>
+    {% endfor %}
+  </ul>
+</div>

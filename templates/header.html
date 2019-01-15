@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-dark container justify-content-between">
+  <a class="navbar-brand" href="{{url_for('showCatalogs')}}">Catalog App</a>
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> -->
+  <!-- <span class="navbar-toggler-icon"></span> -->
+  <!-- </button> -->
+  <ul class="nav justify-content-end">
+    {% if 'username' in login_session %}
+    <li class="nav-item">
+      <a href="#" style="line-height: 2;">{{ login_session['username'] }}</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bg-primary" href="{{url_for('signout')}}" style="margin-left: 10px;">Log out</a>
+    </li>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link bg-danger" href="{{url_for('showSignup')}}">Sign up</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link bg-primary" href="{{url_for('showLogin')}}" style="margin-left: 10px;">Sign in</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

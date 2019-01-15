@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+<main role="main">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class='flash'>
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    </div>
+    <h1></h1>
+    <div class="container">
+      <div class="row">
+        {% include "categories.html" %}
+        {% include "categoryDetails.html" %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

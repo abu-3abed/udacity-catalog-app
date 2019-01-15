@@ -1,0 +1,14 @@
+<div class="col">
+  <ul>
+    <li><h1 style="display: inline-block;">{{ category_name }} items ({{ items|count() }} items)</h1>
+      {% for item in items %}
+    <li><a href="{{url_for('showItemDetails', category_name=category_name, item_id=item.id)}}"> {{ item.name }} </a></li>
+    {% endfor %}
+  </ul>
+  {% if login_session['username'] %}
+  <a href="{{url_for('newItem',category_name=category_name)}}" class="btn btn-primary btn-lg">Add Item</a>
+  {% endif %}
+  {% if login_session['username'] == category.user.name %}
+  <a href="{{url_for('deleteCategory', category_name=category_name)}}" class="btn btn-danger btn-lg text-right">Delete Category</a></li>
+  {% endif %}
+</div>

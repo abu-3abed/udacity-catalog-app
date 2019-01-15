@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+<main role="main">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>{{item.name}}</h1>
+    <p>{{item.description}}</p>
+    {% if login_session['username'] == item.user.name %}
+    <a href="{{url_for('editItem', category_name=item.category.name, item_id=item.id)}}" class="btn btn-primary btn-lg">Edit</a>
+    <a href="{{url_for('deleteItem', category_name=item.category.name, item_id=item.id)}}" class="btn btn-secondary btn-lg">Delete</a>
+    {% endif %}
+  </div>
+</main>
+{% endblock %}

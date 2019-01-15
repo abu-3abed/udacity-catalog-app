@@ -1,0 +1,12 @@
+<div class="col-4">
+  <ul>
+    <li><h1>Categories</h1>
+    </li>
+    {% for c in categories %}
+    <li><a href="{{ url_for('showItems', category_name=c.name) }}"> {{ c.name }} </a></li>
+    {% endfor %}
+  </ul>
+  {% if login_session['username'] %}
+  <a href="{{ url_for('newCategory') }}" class="btn btn-info btn-large">Add Category</a>
+  {% endif %}
+</div>

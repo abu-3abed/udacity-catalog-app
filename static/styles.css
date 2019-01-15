@@ -1,0 +1,48 @@
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+body {
+  padding-top: 3.5rem;
+}
+
+.jumbotron .col-4 {
+  padding-right: 30px;
+  border-right: solid 1px black
+}
+
+.flash {
+  background-color: #98FB98;
+  width: 100%;
+  text-decoration: none;
+
+}
+
+.flash li {
+  list-style-type: none;
+  text-align: center;
+
+}
+
+.jumbotron h1 {
+  color: midnightblue;
+}
+
+.jumbotron li {
+  list-style-type: none;
+}
+
+nav {
+  background-color: midnightblue;
+}
+
+nav a {
+  color: white;
+  font-weight: bold;
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav ul {
+  float: right;
+  text-align: right;
+}

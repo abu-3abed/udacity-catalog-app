@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+{% include "header.html" %}
+<main role="main">
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <h1>New Item</h1>
+    <form action="?state={{login_session['state']}}" method="POST">
+      <label>Title</label><br>
+      <input type="text" name="name"><br>
+      <label>Description</label><br>
+      <textarea name="description" cols="30" rows="10"></textarea><br>
+      <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+    </form>
+  </div>
+</main>
+{% endblock %}
