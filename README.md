@@ -10,15 +10,9 @@ you can make a clone of this project with this command
 	git clone https://github.com/abu-3abed/udacity-catalog-app.git
 or you can download it manually by pressing 'Clone or download' and then 'Download ZIP'.
 
-after installing project you have to install **Flask** and **passlib** using pip package manager by entering this in your command line:
+after installing project you have to install project requirements using pip package manager by entering this in your command line:
 
-	pip install flask
-  
-previous code will install **Flask** for you. To install **passlib** enter this command:
-
-	pip install passlib
-	
-for more information on **Flask** framework and **passlib** Python library, look through their documentation from [here](http://flask.pocoo.org/docs/1.0/) and [here](https://passlib.readthedocs.io/en/stable/index.html) respectively.
+	pip install -r requirements.txt
 
 running project
 ===============
