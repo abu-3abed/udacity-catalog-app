@@ -1,11 +1,10 @@
-import os
-import sys
 from sqlalchemy import Column, ForeignKey, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy import create_engine
 
 Base = declarative_base()
+
 
 class User(Base):
     __tablename__ = 'user'
@@ -29,6 +28,7 @@ class User(Base):
             'auto_signin': self.auto_signin,
         }
 
+
 class Category(Base):
     __tablename__ = 'category'
 
@@ -36,7 +36,7 @@ class Category(Base):
     name = Column(String(250), nullable=False)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
-    
+
     @property
     def serialize(self):
         """Return object data in easily serializeable format"""
@@ -45,6 +45,7 @@ class Category(Base):
             'name': self.name,
             'author': self.user.name,
         }
+
 
 class Item(Base):
     __tablename__ = 'item'
@@ -56,8 +57,7 @@ class Item(Base):
     category = relationship(Category)
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
-    
-    
+
     @property
     def serialize(self):
         """Return object data in easily serializeable format"""
@@ -68,7 +68,6 @@ class Item(Base):
             'author': self.user.name,
             'description': self.description,
         }
-
 
 
 engine = create_engine('sqlite:///catalogitemswithusers.db')
