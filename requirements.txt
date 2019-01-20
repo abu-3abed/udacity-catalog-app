@@ -9,6 +9,7 @@ google-auth==1.6.2
 google-auth-httplib2==0.0.3
 httplib2==0.12.0
 idna==2.7
+IMDbPY==6.5
 itsdangerous==1.1.0
 Jinja2==2.10
 lxml==4.2.3
@@ -22,11 +23,12 @@ pyasn1-modules==0.2.2
 PyJWT==1.6.4
 PySocks==1.6.8
 pytz==2018.5
-requests>=2.20.0
+requests==2.19.1
 rsa==4.0
 six==1.11.0
 SQLAlchemy==1.2.10
 stevedore==1.28.0
+twilio==6.15.1
 uritemplate==3.0.0
 urllib3==1.23
 virtualenv==16.0.0
