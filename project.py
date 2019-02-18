@@ -81,7 +81,7 @@ def getUserIDbyEmail(user_email):
 
     session = DBSession()
     user = session.query(User).filter_by(
-        email=user_email, auto_signin=False).one_or_none()
+        email=user_email).one_or_none()
     if user:
         return user.id
     else:
@@ -93,7 +93,7 @@ def getUserIDbyUsername(user_name):
     id; otherwise None."""
     session = DBSession()
     user = session.query(User).filter_by(
-        name=user_name, auto_signin=False).one_or_none()
+        name=user_name).one_or_none()
     if user:
         return user.id
     else:
@@ -122,7 +122,7 @@ def SingleItemJSON(category_name, item_id):
     """ This is a JSON endpoint which returns a specific item per category."""
     session = DBSession()
     category = session.query(Category).filter_by(name=category_name).one()
-    item = session.query(Item).filter_by(category_id=category.id, id=item_id)
+    item = session.query(Item).filter_by(category_id=category.id, id=item_id).one()
     return jsonify(item=item.serialize)
 
 
@@ -211,7 +211,10 @@ def editItem(category_name, item_id):
      the edited item by POST request."""
     session = DBSession()
     item = session.query(Item).filter_by(id=item_id).one()
-    if request.method == 'POST' and login_session['username']:
+    username = session.query(Item).filter_by(id=item_id).one().user.name
+    print(username)
+
+    if request.method == 'POST' and login_session['username'] == username:
         # CSRF fix
         if not (request.args['state'] == login_session['state']):
             abort(403)
@@ -222,10 +225,12 @@ def editItem(category_name, item_id):
         session.commit()
         flash('%s Successfully Edited' % item.name)
         return redirect(url_for('showItems', category_name=category_name))
-    else:
+    elif login_session['username'] == username:
         return render_template('editItem.html',
                                login_session=login_session,
                                item=item)
+    else:
+        abort(403)
 
 
 @app.route('/catalog/<string:category_name>/items/<int:item_id>/delete',
@@ -235,7 +240,9 @@ def deleteItem(category_name, item_id):
      will delete the item by POST request."""
     session = DBSession()
     item = session.query(Item).filter_by(id=item_id).one()
-    if request.method == 'POST' and login_session['username']:
+    username = session.query(Item).filter_by(id=item_id).one().user.name
+
+    if request.method == 'POST' and login_session['username'] == username:
         # CSRF fix
         if not (request.args['state'] == login_session['state']):
             abort(403)
@@ -243,10 +250,12 @@ def deleteItem(category_name, item_id):
         session.commit()
         flash('%s Successfully Deleted' % item.name)
         return redirect(url_for('showItems', category_name=category_name))
-    else:
+    elif login_session['username'] == username:
         return render_template('deleteItem.html',
                                login_session=login_session,
                                item=item)
+    else:
+        abort(403)
 
 
 @app.route('/catalog/<string:category_name>/items/delete',
@@ -264,10 +273,12 @@ def deleteCategory(category_name):
         session.commit()
         flash('%s Successfully Deleted' % category.name)
         return redirect(url_for('showCatalogs'))
-    else:
+    elif login_session['username'] == username:
         return render_template('deleteCategory.html',
                                login_session=login_session,
                                category=category)
+    else:
+        abort(403)
 
 
 @app.route('/catalog/new', methods=['GET', 'POST'])
