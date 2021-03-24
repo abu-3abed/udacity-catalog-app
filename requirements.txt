@@ -24,7 +24,7 @@ PyJWT==1.6.4
 PySocks==1.6.8
 pytz==2018.5
 requests>=2.20.0
-rsa==4.0
+rsa==4.1
 six==1.11.0
 SQLAlchemy==1.2.10
 stevedore==1.28.0
