@@ -30,7 +30,7 @@ SQLAlchemy==1.2.10
 stevedore==1.28.0
 twilio==6.15.1
 uritemplate==3.0.0
-urllib3==1.23
+urllib3==1.26.5
 virtualenv==16.0.0
 virtualenv-clone==0.3.0
 virtualenvwrapper==4.8.2
