@@ -20,7 +20,7 @@ passlib==1.7.1
 pbr==4.0.4
 pyasn1==0.4.4
 pyasn1-modules==0.2.2
-PyJWT==1.6.4
+PyJWT==2.4.0
 PySocks==1.6.8
 pytz==2018.5
 requests>=2.20.0
